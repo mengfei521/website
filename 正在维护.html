@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>网站维护中</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+        :root {
+            --bg: #f5f5f7;
+            --fg: #1d1d1f;
+            --muted: #6e6e73;
+            --tint: #0a84ff;
+            --hairline: rgba(0, 0, 0, .08);
+            --radius: 16px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #000;
+                --fg: #f5f5f7;
+                --muted: #a1a1a6;
+                --tint: #0a84ff;
+                --hairline: rgba(255, 255, 255, .12);
+            }
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Segoe UI, Roboto, Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            display: grid;
+            place-items: center;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        main {
+            width: min(760px, 92vw);
+            padding: clamp(22px, 4vw, 44px);
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius);
+            background: linear-gradient(180deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, .75));
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .06);
+        }
+
+        @media(prefers-color-scheme:dark) {
+            main {
+                background: linear-gradient(180deg, #0a0a0a, #000);
+                box-shadow: 0 10px 28px rgba(255, 255, 255, .06);
+            }
+        }
+
+        h1 {
+            margin: .2em 0 .4em;
+            font-size: clamp(28px, 5vw, 44px);
+            letter-spacing: -.02em
+        }
+
+        p {
+            margin: .5em 0;
+            color: var(--muted);
+            font-size: clamp(15px, 2vw, 18px)
+        }
+
+        .row {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            background: var(--tint);
+            padding: 12px 18px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 8px 20px rgba(10, 132, 255, .25);
+            transition: transform .12s ease, box-shadow .2s ease
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 26px rgba(10, 132, 255, .32)
+        }
+
+        .muted {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .meta {
+            margin-top: 14px;
+            padding: 12px;
+            border: 1px solid var(--hairline);
+            border-radius: 12px;
+            font-size: 14px
+        }
+
+        .meta strong {
+            color: var(--fg)
+        }
+    </style>
+</head>
+
+<body>
+    <main role="main" aria-labelledby="title">
+        <h1 id="title">网站正在维护</h1>
+        <p>当前服务暂不可用，请稍后再试。我们正在加紧恢复中，给你带来不便，敬请谅解。</p>
+
+        <div class="meta" role="status">
+            <div>状态：<strong>维护中</strong></div>
+            <div>时间：<strong id="today">—</strong></div>
+        </div>
+
+        <div class="row">
+            <a id="contactLink" class="btn" href="#" target="_blank" rel="noopener">联系我</a>
+            <span class="muted">如有问题请访问我们的支持页面或联系站长。</span>
+        </div>
+    </main>
+
+    <script>
+        const CONFIG = {
+            url: 'https://mengfei521.top/%E7%95%99%E8%A8%80%E6%9D%BF.html',   // ← 换成你的站点链接
+            timezone: 'Asia/Singapore'
+        };
+
+        function formatCNDate(date, tz) {
+            const fmt = new Intl.DateTimeFormat('zh-CN', { timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'long' });
+            const parts = fmt.formatToParts(date).reduce((acc, p) => (acc[p.type] = p.value, acc), {});
+            return `${parts.year}年${parts.month}月${parts.day}日 ${parts.weekday}`;
+        }
+
+        (function init() {
+            const now = new Date();
+            document.getElementById('today').textContent = formatCNDate(now, CONFIG.timezone);
+            const link = document.getElementById('contactLink');
+            link.setAttribute('href', CONFIG.url);
+        })();
+    </script>
+</body>
+
+</html>

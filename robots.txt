@@ -1,0 +1,3 @@
+User-agent: Baiduspider
+Allow: /
+Sitemap: https://mengfei521.top/sitemap.xml

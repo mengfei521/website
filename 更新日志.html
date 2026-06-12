@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>更新日志 | Update Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f0f2f5, #e0eafc);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .log-container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 40px 30px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .log-entry {
+            margin-bottom: 30px;
+            border-left: 4px solid #6a11cb;
+            padding-left: 20px;
+            position: relative;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .log-entry::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: #6a11cb;
+            border-radius: 50%;
+            position: absolute;
+            left: -8px;
+            top: 10px;
+        }
+
+        .log-entry h2 {
+            margin: 0;
+            font-size: 22px;
+            color: #222;
+        }
+
+        .log-entry .date {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .log-entry ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="log-container">
+        <h1>更新日志</h1>
+
+        <div class="log-entry">
+            <h2>v1.0.4</h2>
+            <div class="date">2025-07-13</div>
+            <ul>
+                <li>增加学习导航栏📚</li>
+                <li>增删部分网站，优化图表显示问题🐰</li>
+                <li>学习栏增加各类学习资源😈</li>
+            </ul>
+        </div>
+
+        <div class="log-entry">
+            <h2>v1.0.3</h2>
+            <div class="date">2025-06-27</div>
+            <ul>
+                <li>🔓️启用隐藏界面</li>
+                <li>增删部分网站</li>
+                <li>仔细研究能够找到通往世界的大门😏</li>
+            </ul>
+        </div>
+
+        <div class="log-entry">
+            <h2>v1.0.2</h2>
+            <div class="date">2025-06-21</div>
+            <ul>
+                <li>增加输入框输入动画特效💃🕺</li>
+                <li>增删部分网站</li>
+                <li>优化部分网站图标显示问题👺</li>
+            </ul>
+        </div>
+
+        <div class="log-entry">
+            <h2>v1.0.1</h2>
+            <div class="date">2025-06-07</div>
+            <ul>
+                <li>新增部分网站，优化用户体验。</li>
+                <li>添加隐藏网页，用户可以快速点击5下导航栏图标进入隐藏网页</li>
+                <li>隐藏页允许用户自定义网站、图标等信息，长按可删除；支持导出</li>
+                <li>增加彩蛋🌈，用户按下左左右右出现彩蛋</li>
+
+            </ul>
+        </div>
+
+        <div class="log-entry">
+            <h2>v1.0.0</h2>
+            <div class="date">2025-06-04</div>
+            <ul>
+                <li>初版上线，汇集各类功能性在线网站，支持网站导航。</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

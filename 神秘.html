@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>进入赛博空间</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+            background: black;
+            color: #0f0;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .login-container {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px 40px;
+            border: 2px solid #0f0;
+            border-radius: 8px;
+            box-shadow: 0 0 20px #0f0;
+            text-align: center;
+            color: #0f0;
+        }
+
+        input {
+            padding: 8px;
+            width: 80%;
+            margin-top: 20px;
+            background: black;
+            border: 1px solid #0f0;
+            color: #0f0;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 20px;
+            background: black;
+            border: 1px solid #0f0;
+            color: #0f0;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0f0;
+            color: black;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="matrixCanvas"></canvas>
+
+    <div class="login-container">
+        <h1>CYBER SYSTEM v9.7</h1>
+        <p class="status">身份验证中...</p>
+        <input type="text" id="accessCode" placeholder="请输入接入密钥..." />
+        <button onclick="verifyAccess()">接入系统</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // 数码雨动画
+        const canvas = document.getElementById("matrixCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+
+        const katakana = "アァイィウエエォカキクケコサシスセソタチツテトナニヌネノ";
+        const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const nums = "0123456789";
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array.from({ length: columns }).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 33);
+
+        // 登录验证逻辑
+        function verifyAccess() {
+            const code = document.getElementById("accessCode").value.trim();
+            const result = document.getElementById("result");
+
+            if (code.toLowerCase() === "neo" || code === "1999") {
+                result.innerText = "✅ 访问授权成功，欢迎进入主系统";
+                document.querySelector(".status").innerText = "ACCESS GRANTED";
+
+                // 1.5秒后自动跳转到你的目标网页
+                setTimeout(() => {
+                    window.location.href = "神秘赛博隐藏页.html"; // ← 修改为你的实际目标页面
+                }, 1500);
+            } else {
+                result.innerText = "❌ 密钥错误，访问被拒绝";
+                document.querySelector(".status").innerText = "ACCESS DENIED";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

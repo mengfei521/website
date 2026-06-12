@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>隐蔽角落</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            /* background: url('https://cdn.stocksnap.io/img-thumbs/960w/colorful-bokeh_2END49TZPS.jpg') no-repeat center center fixed; */
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+
+        }
+
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.stocksnap.io/img-thumbs/960w/colorful-bokeh_2END49TZPS.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(20px);
+            /* 控制模糊程度，数值越大越模糊 */
+            z-index: -1;
+        }
+
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 60px rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card {
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(145deg, #0fffc1, #147fff);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .desc {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+                align-items: flex-start;
+            }
+
+            .container {
+                padding: 20px;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-blur"></div>
+
+    <div class="container">
+        <a href="隐藏页跳转/共享apple账号.html" class="card" target="_blank">
+            <div class="title">Apple Id</div>
+            <div class="desc">用于下载海外app</div>
+        </a>
+        <a href="https://github.com/chen08209/FlClash/releases/" class="card" target="_blank">
+            <div class="title">FiClash</div>
+            <div class="desc">代理工具</div>
+        </a>
+        <a href="https://github.com/libnyanpasu/clash-nyanpasu/releases" class="card" target="_blank">
+            <div class="title">clash</div>
+            <div class="desc">代理工具</div>
+        </a>
+        <a href="隐藏页跳转/节点.txt" class="card" target="_blank">
+            <div class="title">免费节点</div>
+            <div class="desc">随时更新失效</div>
+        </a>
+        <a href="https://github.com/huiyadanli/RevokeMsgPatcher/releases/download/2.0/RevokeMsgPatcher.v2.0.zip"
+            class="card" target="_blank">
+            <div class="title">RevokeMsgPatcher</div>
+            <div class="desc">微信QQ消息防撤回</div>
+        </a>
+        <a href="https://www.meiguodizhi.com/" class="card" target="_blank">
+            <div class="title">虚拟信息</div>
+            <div class="desc">用于注册各类账号填写虚拟信息</div>
+        </a>
+
+        <a href="隐藏页跳转/直播源.html" class="card" target="_blank">
+            <div class="title">直播源</div>
+            <div class="desc">请下载APTV导入链接观看</div>
+        </a>
+
+        </a>
+        <a href="https://sub.dler.io/" class="card" target="_blank">
+            <div class="title">订阅转换</div>
+            <div class="desc">订阅链接转换分流</div>
+        </a>
+
+        <a href="https://www.xn--sss604efuw.com/" class="card" target="_blank">
+            <div class="title">饭太硬</div>
+            <div class="desc">TVbox影视源</div>
+        </a>
+
+    </div>
+</body>
+
+</html>
